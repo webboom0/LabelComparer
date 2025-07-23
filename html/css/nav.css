@@ -1,0 +1,198 @@
+:root {
+  --gnbWd: 820px;
+  --gnbMaxWd: 1100px;
+  --radius: 1rem;
+}
+
+.gnb {
+  flex-grow: 1;
+  max-width: var(--gnbMaxWd);
+  height: 100%;
+}
+
+.gnb>ul {
+  z-index: 2;
+  left: 50%;
+  top: 3px;
+  transition: all .5s ease 0s;
+  display: flex;
+  height: calc(100% - 3px);
+  flex-grow: 1;
+  max-width: 1280px;
+}
+
+.gnb ul>li {
+  flex-grow: 1;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  position: relative;
+  flex-basis: 100%;
+}
+
+/* 1차메뉴 링크 */
+.gnb>ul>li>a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 4rem;
+  width: 100%;
+  height: 100%;
+  font-weight: 500;
+  font-size: 1.6rem;
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+}
+
+
+/* pc버전에서 숨겨지는 요소 */
+.sideMenuCloseBtn,
+.header .etcMenu .sideMenuBtn {
+  display: none;
+}
+
+@media (max-width:780px) {
+  :root {
+    --sideMenuSize: 500px;
+  }
+
+  .header .etcMenu .sideMenuBtn {
+    display: flex;
+    color: #333;
+    padding: 1rem;
+    font-size: 2.5rem;
+  }
+
+  .sideMenuBtn {
+    width: var(--allMenuSize);
+    height: var(--allMenuSize);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 5px;
+  }
+
+  .gnb {
+    display: flex;
+    position: fixed;
+    right: -100vw;
+    left: auto;
+    transform: none;
+    top: 0;
+    background: var(--color-primary);
+    width: 100vw;
+    height: 100vh;
+    max-width: var(--sideMenuSize);
+    z-index: 30;
+    padding-top: 6.4rem;
+    z-index: 200;
+    overflow-y: auto;
+    transition: all .5s ease-out 0s;
+  }
+
+  .gnb>ul {
+    transition: none;
+  }
+
+  .sideMenuOpen .header {
+    position: static;
+  }
+
+  .gnb>ul {
+    display: block;
+    width: 100%;
+    position: static;
+    height: calc(100vh - 6.4rem);
+    transform: none;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    background-color: #fff;
+    overflow-y: auto;
+    border-top: solid 1px var(--color-border);
+  }
+
+  .sideMenuOpen #gnb .depth-2 {
+    display: none;
+  }
+
+  .gnb ul>li {
+    align-items: flex-start;
+    color: #333;
+  }
+
+  .gnb>ul>li>a {
+    border-bottom: solid 1px #e0e0e0;
+    padding: 20px 10px;
+    justify-content: flex-start;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .gnb ul>li {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .gnb a {
+    display: block;
+  }
+
+  .gnb>ul>li.active>a span {
+    color: var(--color-primary);
+  }
+
+  .sideMenuOpen .gnb,
+  .sideMenuOpen .header .group {
+    right: 0;
+  }
+
+  .allMenuBtn,
+  .sideMenuCloseBtn {
+    display: none;
+  }
+
+  .sideMenuOpen .sideMenuCloseBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 0.4rem;
+    background-color: #fff;
+    color: #222;
+    position: absolute;
+    right: 2rem;
+    top: 1.8rem;
+  }
+
+  #gnb .etcMenu a::before {
+    display: none;
+  }
+
+  #gnb .etcMenu {
+    display: flex;
+    color: #fff;
+    padding: 0 10px;
+    position: absolute;
+    left: 2rem;
+    top: 1.8rem;
+  }
+
+  #gnb .etcMenu a {
+    padding: .5rem 1.5rem;
+    background: #fff;
+    color: #333;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #gnb .etcMenu .sideMenuBtn {
+    display: none;
+  }
+
+}

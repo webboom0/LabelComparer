@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Label Comparer</title>
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="keywords" content="Label Comparer, 라벨비교">
+  <meta name="description" content="Label Comparer">
+  <link rel="shortcut icon" href="images/favicon.ico">
+  <!-- css -->
+  <link rel="stylesheet" href="css/aos.css">
+  <link rel="stylesheet" href="css/default.css">
+  <link rel="stylesheet" href="css/sub.css">
+  <!-- js -->
+  <script src="js/aos.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/lib.js"></script>
+  <script src="js/asyncAlert.js"></script>
+</head>
+
+<body>
+  <!-- skip -->
+  <div id="skipNav">
+    <ul>
+      <li><a href="#contents">본문 바로가기</a></li>
+      <li><a href="#gnb">주메뉴 바로가기</a></li>
+    </ul>
+  </div>
+  <div class="wrap sub-wrap">
+    <!--header  -->
+    <header class="header">
+      <div class="container">
+        <div class="header-left">
+          <h1 class="logo"><a href="#"><span class="blind">Label Comparer</span></a></h1>
+          <!-- gnb -->
+          <nav class="gnb" id="gnb">
+            <button type="button" class="sideMenuCloseBtn" onclick="gnb.close()"><i class="ri-close-fill"></i><span
+                class="blind">메뉴닫기</span></button>
+            <ul>
+              <li class="depth-1">
+                <a href="#"><span>서비스 소개</span></a>
+              </li>
+              <li class="depth-1">
+                <a href="#"><span>커뮤니티</span></a>
+              </li>
+              <li class="depth-1">
+                <a href="#"><span>공지사항</span></a>
+              </li>
+              <li class="depth-1">
+                <a href="#"><span>FAQ</span></a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="etcMenu">
+          <!-- 로그인 전 -->
+          <a href="#" class="login-btn"><span>로그인</span></a>
+          <!-- 로그인 후 
+          <a href="javascript:;" class="user-info"><span class="m-blind">환영합니다</span><span
+              class="txt-blue">홍길동(HONGGD)</span>님</a>
+          <a href="#" class="logout-btn"><span>로그아웃</span></a>
+          -->
+          <!-- (모바일) 사이트메뉴 버튼 -->
+          <button type="button" class="sideMenuBtn" data-modalClickable='false' aria-label="메뉴 열기"
+            aria-expanded="false"><i class="ri-menu-line"></i><span class="blind">메뉴열기</span></button>
+        </div>
+      </div>
+    </header>
+    <!-- contents -->
+    <div class="contents sub-product" id="contents">
+      <div class="product-wrap">
+        <section class="sub-section">
+          <div class="inner">
+            <div class="title-group mt2">
+              <h2 class="sub-title">복잡한 라벨 검수<br> 이제는 간단하고 정확하게!</h2>
+              <p class="comment">지금 신청하고, 라벨 검수의 새 기준을 경험해보세요.</p>
+            </div>
+            <div class="select-group mt4">
+              <div class="btn-select">
+                <input type="radio" name="product" id="product1" checked>
+                <label for="product1">
+                  <span class="subj">
+                    <span class="badge blue">BEST</span>
+                    <span class="badge purple">첫달무료</span>
+                    <span class="txt">월 정기구독</span>
+                  </span>
+                  <span class="price-group">
+                    <strong>
+                      <span class="small">월</span>
+                      <span class="price">18,900</span>
+                      <span class="fw700">원</span>
+                    </strong>
+                  </span>
+                </label>
+              </div>
+              <div class="btn-select">
+                <input type="radio" name="product" id="product2">
+                <label for="product2">
+                  <span class="subj">
+                    <span class="badge blue">BEST</span>
+                    <span class="badge green">가성비</span>
+                    <span class="txt">연 정기구독</span>
+                  </span>
+                  <span class="price-group">
+                    <em>
+                      <span class="cancle">226,800</span>
+                      <span class="countdown">15.2% <i class="ri-arrow-down-line"></i></span>
+                    </em>
+                    <strong>
+                      <span class="small">연</span>
+                      <span class="price">196,000</span>
+                      <span class="fw700">원</span>
+                    </strong>
+                  </span>
+                </label>
+              </div>
+              <!-- // .btn-select -->
+            </div>
+            <!-- // .select-group -->
+          </div>
+          <!-- // .inner -->
+        </section>
+        <section class="sub-section select-product">
+          <div class="inner">
+            <h2 class="sub-title"><span class="round"><i class="ri-checkbox-circle-fill"></i>선택한 상품</span></h2>
+            <div class="product-select">
+              <div class="product-item">
+                <span class="label">월 정기구독</span>
+                <div class="price-group">
+                  <span class="small">월</span>
+                  <span class="price">18,900</span>
+                  <span class="fw700">원</span>
+                </div>
+              </div>
+              <!-- // .product-item -->
+              <div class="btn-group">
+                <a href="sub2.html" class="btn-order">구독하기</a>
+              </div>
+              <!-- // .product-item -->
+            </div>
+            <!-- // .product-select -->
+          </div>
+          <!-- // .inner -->
+        </section>
+        <!-- // .sub-section -->
+      </div>
+      <!-- // .product-wrap -->
+    </div>
+    <!-- //contents -->
+    <!-- footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-top">
+          <a href="#">개인정보처리방침</a>
+          <a href="#">이용약관</a>
+        </div>
+        <div class="footer-bottom">
+          <div class="footer-info">
+            <span>(주)브릴리언트시스템즈</span>
+            <span>T. +82-44-865-6602</span>
+            <span>F. +82-303-3130-0602</span>
+          </div>
+          <div class="footer-info">
+            <span>info@brillys.com</span>
+            <span>세종특별자치시 집현중앙7로 6, 대명벨리온 지식산업센터 B동 1207호</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- //footer -->
+  </div>
+  <!-- // wrap -->
+</body>
