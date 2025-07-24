@@ -293,12 +293,32 @@
         // 비활성 상태일 때 기본 링크 이동 방지
         event.preventDefault();
 
+        // 어떤 조건이 누락되었는지 확인
+        const selectedPayment = document.querySelector('input[name="pay-option"]:checked');
+        const checkboxes = document.querySelectorAll('.list-group input[type="checkbox"]');
+        const checkedCount = document.querySelectorAll('.list-group input[type="checkbox"]:checked').length;
+        const totalCount = checkboxes.length;
+
+        let warningMessage = '';
+        let confirmButtonText = '';
+
+        if (!selectedPayment && checkedCount < totalCount) {
+          warningMessage = '결제 방법을 선택하고 모든 약관에 동의해주세요.';
+          confirmButtonText = '결제 방법 선택하기';
+        } else if (!selectedPayment) {
+          warningMessage = '결제 방법을 선택해주세요.';
+          confirmButtonText = '결제 방법 선택하기';
+        } else if (checkedCount < totalCount) {
+          warningMessage = '결제를 진행하려면 모든 약관에 동의해주세요.';
+          confirmButtonText = '전체 동의하기';
+        }
+
         // 경고 메시지 표시
         const result = await asyncAlert.fire({
-          title: '약관 동의 필요',
-          text: '결제를 진행하려면 모든 약관에 동의해주세요.',
+          title: '필수 항목 누락',
+          text: warningMessage,
           icon: 'warning',
-          confirmButtonText: '전체 동의하기',
+          confirmButtonText: confirmButtonText,
           cancelButtonText: '취소',
           showCancelButton: true,
           confirmButtonColor: 'primary',
@@ -306,24 +326,32 @@
         });
 
         if (result.isConfirmed) {
-          // 전체 동의 실행
-          const btnAllAgree = document.querySelector('.btn-all-agree');
-          const checkboxes = document.querySelectorAll('.list-group input[type="checkbox"]');
+          if (!selectedPayment) {
+            // 결제 방법 선택으로 포커스 이동
+            const firstPaymentOption = document.querySelector('input[name="pay-option"]');
+            if (firstPaymentOption) {
+              firstPaymentOption.focus();
+              firstPaymentOption.closest('.list-item').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+          } else if (checkedCount < totalCount) {
+            // 전체 동의 실행
+            const btnAllAgree = document.querySelector('.btn-all-agree');
+            const checkboxes = document.querySelectorAll('.list-group input[type="checkbox"]');
 
-          // 전체 동의 버튼 활성화
-          btnAllAgree.classList.add('active');
+            // 전체 동의 버튼 활성화
+            btnAllAgree.classList.add('active');
 
-          // 모든 체크박스 체크
-          checkboxes.forEach(checkbox => {
-            checkbox.checked = true;
-          });
+            // 모든 체크박스 체크
+            checkboxes.forEach(checkbox => {
+              checkbox.checked = true;
+            });
 
-          // 결제 버튼 활성화
-          paymentBtn.setAttribute('data-disabled', 'false');
-          paymentBtn.classList.remove('disabled');
+            // 결제 버튼 상태 즉시 업데이트
+            updatePaymentButtonState();
 
-          // 성공 메시지
-          await asyncAlert.success('동의 완료', '모든 약관에 동의되었습니다. 이제 결제를 진행할 수 있습니다.');
+            // 성공 메시지
+            await asyncAlert.success('동의 완료', '모든 약관에 동의되었습니다. 이제 결제를 진행할 수 있습니다.');
+          }
         }
       } else {
         // 활성 상태일 때는 기본 링크 이동 허용 (event.preventDefault() 호출하지 않음)
@@ -338,8 +366,10 @@
       const checkboxes = document.querySelectorAll('.list-group input[type="checkbox"]');
       const checkedCount = document.querySelectorAll('.list-group input[type="checkbox"]:checked').length;
       const totalCount = checkboxes.length;
+      const selectedPayment = document.querySelector('input[name="pay-option"]:checked');
 
-      if (checkedCount === totalCount && totalCount > 0) {
+      // 결제 방법 선택과 모든 약관 동의가 모두 완료되었을 때만 활성화
+      if (selectedPayment && checkedCount === totalCount && totalCount > 0) {
         paymentBtn.setAttribute('data-disabled', 'false');
         paymentBtn.classList.remove('disabled');
       } else {
@@ -353,6 +383,7 @@
       // 기존 lib.js의 전체 동의 기능에 결제 버튼 상태 업데이트 추가
       const btnAllAgree = document.querySelector('.btn-all-agree');
       const checkboxes = document.querySelectorAll('.list-group input[type="checkbox"]');
+      const paymentOptions = document.querySelectorAll('input[name="pay-option"]');
 
       // 전체 동의 버튼 클릭 시 결제 버튼 상태도 업데이트
       if (btnAllAgree) {
@@ -366,6 +397,13 @@
       if (checkboxes.length > 0) {
         checkboxes.forEach(function (checkbox) {
           checkbox.addEventListener('change', updatePaymentButtonState);
+        });
+      }
+
+      // 결제 방법 선택 변경 시 결제 버튼 상태 업데이트
+      if (paymentOptions.length > 0) {
+        paymentOptions.forEach(function (option) {
+          option.addEventListener('change', updatePaymentButtonState);
         });
       }
 
