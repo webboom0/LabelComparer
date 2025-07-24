@@ -111,11 +111,11 @@
 
 @media (max-width:580px) {
 
-    .header .etcMenu>a:not(.sideMenuBtn) {
+    .header .etcMenu>*:not(.sideMenuBtn) {
         display: none;
     }
 
-    .sideMenuOpen .etcMenu>a:not(.sideMenuOpen) {
+    .sideMenuOpen .etcMenu>*:not(.sideMenuOpen) {
         display: block;
     }
 }
