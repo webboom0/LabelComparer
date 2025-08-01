@@ -69,6 +69,9 @@
         </header>
         <!-- contents -->
         <div class="contents" id="contents">
+            <div class="subscribe-btn">
+                <a href="sub.html" class="btn-primary w300">구독하고 라벨 비교하기</a>
+            </div>
             <section class="section-1">
                 <div class="container">
                     <div class="inner">
@@ -110,10 +113,6 @@
                             <p><img src="images/main_img_02.png" alt="라벨 비교 이미지" /></p>
 
                         </div>
-
-                        <div class="mt2" data-aos="fade-up" data-aos-delay="0">
-                            <a href="sub.html" class="btn-primary w300">구독하고 라벨 비교하기</a>
-                        </div>
                     </div>
                 </div>
             </section>
@@ -141,10 +140,6 @@
                                 <div class="loading-spinner"></div>
                                 <div class="loading-text">로딩 중...</div>
                             </div>
-                        </div>
-
-                        <div class="mt2" data-aos="fade-up" data-aos-delay="0">
-                            <a href="sub.html" class="btn-primary w300">구독하고 라벨 비교하기</a>
                         </div>
                     </div>
                 </div>
@@ -180,10 +175,6 @@
                                 <div class="loading-text">로딩 중...</div>
                             </div>
                         </div>
-
-                        <div class="mt2" data-aos="fade-up" data-aos-delay="0">
-                            <a href="sub.html" class="btn-primary w300">구독하고 라벨 비교하기</a>
-                        </div>
                     </div>
                 </div>
             </section>
@@ -218,8 +209,15 @@
                                         <div class="loading-text">로딩 중...</div>
                                     </div>
                                 </div>
-                                <p class="icon pc-visual"><i><img src="images/main_icon_02.png"
-                                            alt="모바일 앱 다운로드 아이콘" /></i></p>
+                                <div class="icon-box">
+                                    <p class="icon pc-visual"><i><img src="images/main_icon_03.png"
+                                                alt="모바일 앱 다운로드 아이콘" /></i></p>
+                                    <p class="icon pc-visual"><i><img src="images/main_icon_02.png"
+                                                alt="모바일 앱 다운로드 아이콘" /></i></p>
+                                    <p class="icon pc-visual"><i><img src="images/main_icon_04.png"
+                                                alt="모바일 앱 다운로드 아이콘" /></i></p>
+                                </div>
+
                             </div>
                         </div>
                         <p class="section-desc fw300" data-aos="fade-up">
@@ -231,9 +229,6 @@
                             <span class="block">수작업에 지친 라벨 비교, 이제 자동화로 바꿔보세요.</span>
                             <span class="block">지금 바로 구독하고, 효율적인 라벨 검수 시작하기!</span>
                         </p>
-                        <div class="mt2" data-aos="fade-up" data-aos-delay="0">
-                            <a href="sub.html" class="btn-primary w300">구독하고 라벨 비교하기</a>
-                        </div>
                     </div>
                 </div>
             </section>
@@ -282,6 +277,16 @@
     <script>
         AOS.init({
             duration: 1000
+        });
+
+        window.addEventListener('scroll', function () {
+            const subscribeBtn = document.querySelector('.subscribe-btn');
+            const lastSectionPositionY = document.querySelector('.section-5').offsetTop;
+            if (window.scrollY > lastSectionPositionY + 100 || window.scrollY < 100) {
+                subscribeBtn.style.display = 'none';
+            } else {
+                subscribeBtn.style.display = 'block';
+            }
         });
     </script>
 </body>
